@@ -1,5 +1,9 @@
-console.log("script.js started");
-
+const today = new Date();
+const todayString = today.toLocaleDateString([], {day: 'numeric'});
+const currentTime = new Date();
+const currentTimeString = currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+document.getElementById("dayDisplay").textContent = todayString;
+document.getElementById("timeDisplay").textContent = currentTimeString;
 async function fetchWeather(mountain) {
   try {
     const response = await fetch(
@@ -17,6 +21,15 @@ async function fetchWeather(mountain) {
   }
 }
 
+function capitalizeFirstChar(str){
+    return str
+          .split(" ")
+          .map(char => {
+            if(char.length === 0) return char;
+            return char[0].toUpperCase() + char.slice(1).toLowerCase();
+          }).join(" ");
+}
+
 function displayWeather(data, mountain) {
   document.getElementById("location").textContent = `${data.sys.country}`;
   document.getElementById("mountain").textContent = `${mountain.name}`;
@@ -26,8 +39,9 @@ function displayWeather(data, mountain) {
     `${data.wind.speed}`;
   document.getElementById("elevationValue").innerHTML =
     `${mountain.elevation}`;
+    const cloudiness = capitalizeFirstChar(data.weather[0].description);
   document.getElementById("cloudinessValue").textContent =
-    `${data.weather[0].description}`;
+    cloudiness;
   const mountainSunrise = new Date(data.sys.sunrise * 1000)
   const sunriseTimeString = mountainSunrise.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})  
   document.getElementById("sunriseValue").textContent = sunriseTimeString;

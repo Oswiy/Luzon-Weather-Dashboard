@@ -86,7 +86,7 @@ body {
 #metaData {
     width: 55%;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 48.5% 48.5%;
     gap: 20px;
 }
 
@@ -102,16 +102,4 @@ body {
 
 .dataTitle, .dataValue, .dataDescription{
     margin: 0;
-}
-
-
-
-#forecast {
-    background-color: #23395d;
-    min-height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 30px;
-    border-radius: 12px;
 }
