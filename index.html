@@ -3,14 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luzon Weather App</title>
+    <title>Mountain Condition Luzon</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav id="navBar">
-      <h2 id="navHeader">Luzon Weather</h2>
+      <h2 id="navHeader">Mountains Condition</h2>
       <div id="searchAndDay">
-        <input id="search" type="text" placeholder="Search" />
+        <select id="mountainSelect">
+          <option value="">Select A Mountain</option>
+        </select>
         <div id="dateAndTime">
           <p>time</p>
           <p>day</p>
@@ -22,37 +24,36 @@
     </nav>
     <div id="weatherMetaData">
       <div id="weatherDisplay">
-        <h5 id="location">Location - Location</h5>
+        <h5 id="location">Location</h5>
         <div id="weather">
-          <div id="temperatureContainer">
-            <h1 id="temperature">temperature</h1>
-            <p id="temperatureDescription">description</p>
+          <div id="mountainContainer">
+            <h1 id="mountain">Mountain</h1>
+            <p id="temperature">temperature</p>
           </div>
-          <div id="temperatureIcon">
+          <div id="icon">
             <h1>Icon</h1>
           </div>
         </div>
         <h5 id="feelsLike">Feels like</h5>
       </div>
       <div id="metaData">
-        <div class="dataCard" id="humidity">
-          <h4 class="dataTitle">HUMIDITY</h4>
-          <h2 class="dataValue" id="humudityValue">55%</h2>
-          <h2 class="dataDescription" id="humudityDescription">Humid</h2>
+        <div class="dataCard" id="hikability">
+          <h4 class="dataTitle">HIKABILITY SCORE</h4>
+          <h2 class="dataValue" id="hikabilityValue">55%</h2>
+          <h2 class="dataDescription" id="hikabilityDescription">Humid</h2>
         </div>
-        <div class="dataCard" id="wind">
-          <h4 class="dataTitle">WIND</h4>
-          <h2 class="dataValue" id="windValue">11 km/h</h2>
-          <h2 class="dataDescription" id="windDirection">Direction: E</h2>
+        <div class="dataCard" id="elevation">
+          <h4 class="dataTitle">ELEVATION</h4>
+          <h2 class="dataValue" id="elevationValue">11 km/h</h2>
         </div>
         <div class="dataCard" id="cloudiness">
           <h4 class="dataTitle">CLOUDINESS</h4>
           <h2 class="dataValue" id="cloudinessValue">Very Cloudy</h2>
         </div>
-        <div class="dataCard" id="airQuality">
-          <h4 class="dataTitle">AIR QUALITY</h4>
-          <h2 class="dataValue" id="airQualityValue">55%</h2>
-          <h2 class="dataDescription" id="visibilityDescription">Nice</h2>
+        <div class="dataCard" id="wind">
+          <h4 class="dataTitle">WIND</h4>
+          <h2 class="dataValue" id="windValue">55%</h2>
+          <h2 class="dataDescription" id="windDescription">Nice</h2>
         </div>
         <div class="dataCard" id="sunrise">
           <h4 class="dataTitle">SUNRISE</h4>
