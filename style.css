@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
 * {
     color: rgb(172, 172, 172);
+    font-family: Inter, sans-serif;
 }
 
 body {
@@ -78,11 +81,6 @@ body {
     justify-content: space-between;
 }
 
-#feelsLike{
-    display: flex;
-    justify-self: flex-end;
-}
-
 #metaData {
     width: 55%;
     display: grid;
@@ -90,14 +88,32 @@ body {
     gap: 20px;
 }
 
-#metaData div{
+.dataCard{
     min-height: 150px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 20px;
     background-color: #23395d;
     border-radius: 12px;
+    position: relative;
+}
+
+.dataCard .dataTitle {
+    justify-self: flex-start;
+}
+
+.dataCard .dataValueContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    flex: 1;
+}
+
+.dataCard .dataDescription{
+    font-size: 12px;
+    position: absolute;
+    bottom: 20px;
 }
 
 .dataTitle, .dataValue, .dataDescription{

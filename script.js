@@ -31,7 +31,7 @@ function capitalizeFirstChar(str){
 }
 
 function displayWeather(data, mountain) {
-  document.getElementById("location").textContent = `${data.sys.country}`;
+  document.getElementById("location").textContent = `${mountain.location}`;
   document.getElementById("mountain").textContent = `${mountain.name}`;
   document.getElementById("temperature").textContent = `${data.main.temp}`;
   document.getElementById("feelsLike").textContent = `${data.main.feels_like}`;
@@ -56,42 +56,48 @@ const mountains = [
     name: "Mt. Pulag",
     lat: 16.5975,
     lon: 120.8992,
-    elevation: "2,922 - 2,930 MASL",
+    elevation: "2,922 - 2,930 ",
+    location: "Benguet, Kabayan"
   },
   {
     id: "ugo",
     name: "Mt. Ugo",
     lat: 16.3192,
     lon: 120.802,
-    elevation: "2,150 - 2,220 MASL",
+    elevation: "2,150 - 2,220",
+    location: "Benguet, Itogon"
   },
   {
     id: "maculot",
     name: "Mt. Maculot",
     lat: 13.9212,
     lon: 121.0519,
-    elevation: "930 - 957 MASL",
+    elevation: "930 - 957",
+    location: "Batangas, Cuenca"
   },
   {
     id: "tapulao",
     name: "Mt. Tapulao",
     lat: 15.481,
     lon: 120.1213,
-    elevation: "2,034 - 2,037 MASL",
+    elevation: "2,034 - 2,037",
+    location: "Zambales, Palauig"
   },
   {
     id: "arayat",
     name: "Mt. Arayat",
     lat: 15.20129,
     lon: 120.74312,
-    elevation: "1,026 MASL",
+    elevation: "1,026",
+    location: "Pampanga, Arayat"
   },
   {
     id: "batulao",
     name: "Mt. Batulao",
     lat: 14.0403,
     lon: 120.802,
-    elevation: "693 - 811 MASL",
+    elevation: "693 - 811",
+    location: "Batangas, Nasugbu"
   },
   {
     id: "daraitan",
@@ -99,27 +105,31 @@ const mountains = [
     lat: 14.6131,
     lon: 121.4388,
     elevation: "719 - 739",
+    location: "Rizal, Tanay"
   },
   {
     id: "pinatubo",
     name: "Mt. Pinatubo",
     lat: 15.14167,
     lon: 120.35,
-    elevation: "1,486 MASL",
+    elevation: "1,486",
+    location: "Tarlac, Capas"
   },
   {
     id: "marami",
     name: "Mt. Marami",
     lat: 14.1986,
     lon: 120.6861,
-    elevation: "633 MASL",
+    elevation: "633",
+    location: "Cavite, Maragondon"
   },
   {
     id: "talamitam",
     name: "Mt. Talamitam",
     lat: 14.10781,
     lon: 120.75991,
-    elevation: "630 - 704 MASL",
+    elevation: "630 - 704",
+    location: "Batangas, Nasugbu"
   },
 ];
 
