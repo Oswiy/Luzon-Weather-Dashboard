@@ -2,6 +2,8 @@ const today = new Date();
 const todayString = today.toLocaleDateString([], {
   day: "numeric",
   month: "long",
+  day: "2-digit",
+  year: "numeric"
 });
 const currentTime = new Date();
 const currentTimeString = currentTime.toLocaleTimeString([], {
@@ -42,6 +44,8 @@ function displayWeather(data, mountain) {
   document.getElementById("difficultyValue").textContent =
     `${mountain.difficulty}`;
   document.getElementById("mountain").textContent = `${mountain.name}`;
+  document.getElementById("humidityValue").textContent =
+    `${data.main.humidity}`;
   document.getElementById("temperature").textContent = `${data.main.temp}`;
   document.getElementById("feelsLike").textContent = `${data.main.feels_like}`;
   document.getElementById("windValue").textContent = `${data.wind.speed}`;

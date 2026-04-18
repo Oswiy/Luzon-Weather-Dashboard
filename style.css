@@ -21,8 +21,12 @@ body {
 #dateAndTime {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+}
+
+#dateAndTime #dayDisplay{
+    font-size: 11.5px;
 }
 
 #dateAndTime p {
@@ -36,7 +40,7 @@ body {
 }
 
 #searchAndDay {
-  gap: 50px;
+  gap: 30px;
   display: flex;
   align-items: center;
 }
@@ -61,7 +65,7 @@ body {
 }
 
 #weatherDisplay {
-  min-width: 45%;
+  min-width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -71,10 +75,11 @@ body {
   backdrop-filter: blur(16px);
   border-radius: 12px;
   padding: 20px;
+  margin-left: 20px;
 }
 
-#weatherDisplay #location,
-#weatherDisplay #feelsLike {
+#weatherDisplay h5,
+#weatherDisplay #feelsLikeContainer p {
   margin: 0;
 }
 
@@ -84,10 +89,14 @@ body {
   justify-content: space-between;
 }
 
+#metaDataContainer {
+  overflow: hidden;
+  width: 66%;
+}
 #metaData {
-  width: 55%;
+  width: 99.5%;
   display: grid;
-  grid-template-columns: 48.5% 48.5%;
+  grid-template-columns: 31.5% 31.5% 31.5%;
   gap: 20px;
 }
 
@@ -101,6 +110,11 @@ body {
   border: 1px solid #1a2a4a;
   border-radius: 12px;
   position: relative;
+}
+
+#humidity {
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
 
 .dataCard .dataTitle {

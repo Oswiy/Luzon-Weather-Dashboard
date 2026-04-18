@@ -19,6 +19,7 @@
         </div>
       </div>
     </nav>
+    <div id="metaDataContainer"></div>
     <div id="weatherMetaData">
       <div id="weatherDisplay">
         <h5>
@@ -58,9 +59,6 @@
               <span>°C</span>
             </p>
           </div>
-          <div id="icon">
-            <h1>Icon</h1>
-          </div>
         </div>
         <div id="feelsLikeContainer">
           <p>
@@ -82,143 +80,174 @@
           </p>
         </div>
       </div>
-      <div id="metaData">
-        <div class="dataCard" id="dificulty">
+      <div id="metaDataContainer">
+        <div class="dataCard" id="humidity">
           <h4 class="dataTitle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              width="20"
+              height="20"
+              fill="white"
+              viewBox="0 0 256 256"
             >
               <path
-                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-              />
+                d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Z"
+              ></path>
             </svg>
-            DIFFICULTY
+            HUMIDITY
           </h4>
           <div class="dataValueContainer">
-            <h2 class="dataValue" id="difficultyValue">Score</h2>
+            <h2 class="dataValue" id="humidityValue">Humidity Score</h2>
           </div>
-          <h2 class="dataDescription" id="hikabilityDescription">
-            Hikability Description
+          <h2 class="dataDescription" id="humidityDescription">
+            Humidity Description
           </h2>
         </div>
-        <div class="dataCard" id="elevation">
-          <h4 class="dataTitle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <polyline points="18 15 12 9 6 15" />
-            </svg>
-            ELEVATION
-          </h4>
-          <div class="dataValueContainer">
-            <h2 class="dataValue" id="elevationValue">
-              Meters Above Sea Level
+        <div id="metaData">
+          <div class="dataCard" id="dificulty">
+            <h4 class="dataTitle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20px"
+                height="20px"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                />
+              </svg>
+              DIFFICULTY
+            </h4>
+            <div class="dataValueContainer">
+              <h2 class="dataValue" id="difficultyValue">Score</h2>
+            </div>
+            <h2 class="dataDescription" id="hikabilityDescription">
+              Hikability Description
             </h2>
           </div>
-          <h2 class="dataDescription" id="elevationDescription">MASL</h2>
-        </div>
-        <div class="dataCard" id="cloudiness">
-          <h4 class="dataTitle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M17.5 19H9a4.5 4.5 0 0 1 0-9h.5a6.5 6.5 0 1 1 12 2.5" />
-            </svg>
-            CLOUDINESS
-          </h4>
-          <div class="dataValueContainer">
-            <h2 class="dataValue" id="cloudinessValue">Cloud</h2>
+          <div class="dataCard" id="elevation">
+            <h4 class="dataTitle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20px"
+                height="20px"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="18 15 12 9 6 15" />
+              </svg>
+              ELEVATION
+            </h4>
+            <div class="dataValueContainer">
+              <h2 class="dataValue" id="elevationValue">
+                Meters Above Sea Level
+              </h2>
+            </div>
+            <h2 class="dataDescription" id="elevationDescription">MASL</h2>
           </div>
-        </div>
-        <div class="dataCard" id="wind">
-          <h4 class="dataTitle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 -960 960 960"
-              fill="#e3e3e3"
-            >
-              <path
-                d="M460-160q-50 0-85-35t-35-85h80q0 17 11.5 28.5T460-240q17 0 28.5-11.5T500-280q0-17-11.5-28.5T460-320H80v-80h380q50 0 85 35t35 85q0 50-35 85t-85 35ZM80-560v-80h540q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43h-80q0-59 40.5-99.5T620-840q59 0 99.5 40.5T760-700q0 59-40.5 99.5T620-560H80Zm660 320v-80q26 0 43-17t17-43q0-26-17-43t-43-17H80v-80h660q59 0 99.5 40.5T880-380q0 59-40.5 99.5T740-240Z"
-              />
-            </svg>
-            WIND
-          </h4>
-          <div class="dataValueContainer">
-            <h2 class="dataValue" id="windValue">Wind Speed</h2>
+          <div class="dataCard" id="cloudiness">
+            <h4 class="dataTitle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20px"
+                height="20px"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M17.5 19H9a4.5 4.5 0 0 1 0-9h.5a6.5 6.5 0 1 1 12 2.5"
+                />
+              </svg>
+              CLOUDINESS
+            </h4>
+            <div class="dataValueContainer">
+              <h2 class="dataValue" id="cloudinessValue">Cloud</h2>
+            </div>
+            <h2 class="dataDescription" id="cloudinessDescription">
+              Cloudiness Description
+            </h2>
           </div>
-          <h2 class="dataDescription" id="windDescription">Wind Direction</h2>
-        </div>
-        <div class="dataCard" id="sunrise">
-          <h4 class="dataTitle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M17 18a5 5 0 0 0-10 0" />
-              <line x1="12" y1="2" x2="12" y2="9" />
-              <line x1="4.22" y1="10.22" x2="5.64" y2="11.64" />
-              <line x1="1" y1="18" x2="3" y2="18" />
-              <line x1="21" y1="18" x2="23" y2="18" />
-              <line x1="18.36" y1="11.64" x2="19.78" y2="10.22" />
-              <line x1="23" y1="22" x2="1" y2="22" />
-              <polyline points="8 6 12 2 16 6" />
-            </svg>
-            SUNRISE
-          </h4>
-          <div class="dataValueContainer">
-            <h2 class="dataValue" id="sunriseValue">Sunrise Time</h2>
+          <div class="dataCard" id="wind">
+            <h4 class="dataTitle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20px"
+                height="20px"
+                viewBox="0 -960 960 960"
+                fill="#e3e3e3"
+              >
+                <path
+                  d="M460-160q-50 0-85-35t-35-85h80q0 17 11.5 28.5T460-240q17 0 28.5-11.5T500-280q0-17-11.5-28.5T460-320H80v-80h380q50 0 85 35t35 85q0 50-35 85t-85 35ZM80-560v-80h540q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43h-80q0-59 40.5-99.5T620-840q59 0 99.5 40.5T760-700q0 59-40.5 99.5T620-560H80Zm660 320v-80q26 0 43-17t17-43q0-26-17-43t-43-17H80v-80h660q59 0 99.5 40.5T880-380q0 59-40.5 99.5T740-240Z"
+                />
+              </svg>
+              WIND
+            </h4>
+            <div class="dataValueContainer">
+              <h2 class="dataValue" id="windValue">Wind Speed</h2>
+            </div>
+            <h2 class="dataDescription" id="windDescription">
+              Wind Direction:
+            </h2>
           </div>
-        </div>
-        <div class="dataCard" id="sunset">
-          <h4 class="dataTitle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 -960 960 960"
-              fill="#e3e3e3"
-            >
-              <path
-                d="m734-556-56-58 86-84 56 56-86 86ZM80-160v-80h800v80H80Zm360-520v-120h80v120h-80ZM226-558l-84-86 56-56 86 86-58 56Zm71 158h366q-23-54-72-87t-111-33q-62 0-111 33t-72 87Zm-97 80q0-117 81.5-198.5T480-600q117 0 198.5 81.5T760-320H200Zm280-80Z"
-              />
-            </svg>
-            SUNSET
-          </h4>
-          <div class="dataValueContainer">
-            <h2 class="dataValue" id="sunsetValue">Sunset Time</h2>
+          <div class="dataCard" id="sunrise">
+            <h4 class="dataTitle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20px"
+                height="20px"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 18a5 5 0 0 0-10 0" />
+                <line x1="12" y1="2" x2="12" y2="9" />
+                <line x1="4.22" y1="10.22" x2="5.64" y2="11.64" />
+                <line x1="1" y1="18" x2="3" y2="18" />
+                <line x1="21" y1="18" x2="23" y2="18" />
+                <line x1="18.36" y1="11.64" x2="19.78" y2="10.22" />
+                <line x1="23" y1="22" x2="1" y2="22" />
+                <polyline points="8 6 12 2 16 6" />
+              </svg>
+              SUNRISE
+            </h4>
+            <div class="dataValueContainer">
+              <h2 class="dataValue" id="sunriseValue">Sunrise Time</h2>
+            </div>
+          </div>
+          <div class="dataCard" id="sunset">
+            <h4 class="dataTitle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20px"
+                height="20px"
+                viewBox="0 -960 960 960"
+                fill="#e3e3e3"
+              >
+                <path
+                  d="m734-556-56-58 86-84 56 56-86 86ZM80-160v-80h800v80H80Zm360-520v-120h80v120h-80ZM226-558l-84-86 56-56 86 86-58 56Zm71 158h366q-23-54-72-87t-111-33q-62 0-111 33t-72 87Zm-97 80q0-117 81.5-198.5T480-600q117 0 198.5 81.5T760-320H200Zm280-80Z"
+                />
+              </svg>
+              SUNSET
+            </h4>
+            <div class="dataValueContainer">
+              <h2 class="dataValue" id="sunsetValue">Sunset Time</h2>
+            </div>
           </div>
         </div>
       </div>
