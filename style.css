@@ -1,121 +1,143 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 
 * {
-    color: rgb(172, 172, 172);
-    font-family: Inter, sans-serif;
+  color: rgb(172, 172, 172);
+  font-family: Inter, sans-serif;
 }
 
 body {
-    min-height: 100vh;
-    margin: 0;
-    background-color: #000631;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(180deg, #0b1021 -70%, #1a2a4a 80%, #2c3d5c 100%);
 }
 
-
-
 #navBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 30px 5px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px 5px 30px;
 }
 
 #dateAndTime {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #dateAndTime p {
-    margin: 0;
+  margin: 0;
 }
 
-#navBar #searchAndDay, #tempScale {
-    display: flex;
-    flex-direction: row;
+#navBar #searchAndDay,
+#tempScale {
+  display: flex;
+  flex-direction: row;
 }
 
 #searchAndDay {
-    gap: 50px;
-    display: flex;
-    align-items: center;
+  gap: 50px;
+  display: flex;
+  align-items: center;
 }
 
 #mountainSelect {
-    border-radius: 12px;
-    border: none;
-    padding: 0 20px;
-    height: 35px;
-    background-color: #23395d;
+  border-radius: 12px;
+  border: none;
+  padding: 0 20px;
+  height: 35px;
+  background-color: #23395d;
 }
 
 #navBar #navHeader {
-    margin: 0;
+  margin: 0;
 }
 
 #weatherMetaData {
-    display: flex;
-    flex-direction: row;
-    padding: 20px 30px 20px 30px;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  padding: 20px 30px 20px 30px;
+  gap: 20px;
 }
 
-#weatherDisplay{
-    min-width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #23395d;
-    border-radius: 12px;
-    padding: 20px;
+#weatherDisplay {
+  min-width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(18, 32, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.247);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  border-radius: 12px;
+  padding: 20px;
 }
 
-#weatherDisplay #location, #weatherDisplay #feelsLike{
-    margin: 0;
+#weatherDisplay #location,
+#weatherDisplay #feelsLike {
+  margin: 0;
 }
 
-#weather{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+#weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #metaData {
-    width: 55%;
-    display: grid;
-    grid-template-columns: 48.5% 48.5%;
-    gap: 20px;
+  width: 55%;
+  display: grid;
+  grid-template-columns: 48.5% 48.5%;
+  gap: 20px;
 }
 
-.dataCard{
-    min-height: 150px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background-color: #23395d;
-    border-radius: 12px;
-    position: relative;
+.dataCard {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  backdrop-filter: blur(16px);
+  background: rgba(60, 80, 88, 0.268);
+  border: 1px solid #1a2a4a;
+  border-radius: 12px;
+  position: relative;
 }
 
 .dataCard .dataTitle {
-    justify-self: flex-start;
+  display: flex;
+  justify-self: flex-start;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
 }
 
-.dataCard .dataValueContainer{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-content: center;
-    flex: 1;
+.dataCard .dataTitle svg {
+  border-radius: 8px;
+  background-color: #1d284e;
+  backdrop-filter: blur(16px);
+  padding: 5px;
 }
 
-.dataCard .dataDescription{
-    font-size: 12px;
-    position: absolute;
-    bottom: 20px;
+#location,
+#mountainContainer p,
+#feelsLikeContainer p {
+  align-items: center;
 }
 
-.dataTitle, .dataValue, .dataDescription{
-    margin: 0;
+.dataCard .dataValueContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  flex: 1;
+}
+
+.dataCard .dataDescription {
+  font-size: 12px;
+}
+
+.dataTitle,
+.dataValue,
+.dataDescription {
+  margin: 0;
 }
