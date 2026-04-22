@@ -1,12 +1,11 @@
-const today = new Date();
-const todayString = today.toLocaleDateString([], {
+const now = new Date();
+const todayString = now.toLocaleDateString([], {
   day: "numeric",
   month: "long",
   day: "2-digit",
   year: "numeric",
 });
-const currentTime = new Date();
-const currentTimeString = currentTime.toLocaleTimeString([], {
+const currentTimeString = now.toLocaleTimeString([], {
   hour: "2-digit",
   minute: "2-digit",
 });
@@ -83,47 +82,13 @@ function humidityAdvice(humidity) {
   }
 }
 
-function getDifficulty(difficulty) {
-  switch (difficulty) {
-    case 1:
-      return "very Easy";
-      break;
-    case 2:
-      return "Easy";
-      break;
-    case 3:
-      return "Mild";
-      break;
-    case 4:
-      return "Average";
-      break;
-    case 5:
-      return "Moderate";
-      break;
-    case 6:
-      return "Challenging";
-      break;
-    case 7:
-      return "Difficult";
-      break;
-    case 8:
-      return "Strenuous";
-      break;
-    case 9:
-      return "Technical";
-      break;
-    default:
-      return "Could not get difficulty";
-  }
-}
-
 function displayWeather(data, mountain) {
   document.getElementById("location").textContent = `${mountain.location}`;
   const mountainDifficulty = mountain.difficulty;
   const difficultyValue = document.getElementById("difficultyValue");
   difficultyValue.textContent = `${mountain.difficulty}/9`;
   document.getElementById("hikabilityDescription").textContent =
-    getDifficulty(mountainDifficulty);
+    `${mountain.difficultyText}`;
   document.getElementById("mountain").textContent = `${mountain.name}`;
   const humidityScore = data.main.humidity;
   const humidityCondition = getHumidity(data.main.humidity);
@@ -135,7 +100,8 @@ function displayWeather(data, mountain) {
   document.getElementById("temperature").textContent = `${data.main.temp}`;
   document.getElementById("feelsLike").textContent = `${data.main.feels_like}`;
   document.getElementById("windValue").textContent = `${data.wind.speed}`;
-  document.getElementById("elevationValue").innerHTML = `${mountain.elevation}m`;
+  document.getElementById("elevationValue").innerHTML =
+    `${mountain.elevation}m`;
   const cloudiness = capitalizeFirstChar(data.weather[0].description);
   document.getElementById("cloudinessValue").textContent = cloudiness;
   const mountainSunrise = new Date(data.sys.sunrise * 1000);
@@ -161,6 +127,7 @@ const mountains = [
     elevation: "2,922",
     location: "Benguet, Kabayan",
     difficulty: 3, // Varies by trail
+    difficultyText: "Mild",
   },
   {
     id: "ugo",
@@ -170,6 +137,7 @@ const mountains = [
     elevation: "2,150",
     location: "Benguet, Itogon",
     difficulty: 5,
+    difficultyText: "Moderate",
   },
   {
     id: "maculot",
@@ -179,6 +147,7 @@ const mountains = [
     elevation: "930",
     location: "Batangas, Cuenca",
     difficulty: 3, // Varies by route
+    difficultyText: "Mild",
   },
   {
     id: "tapulao",
@@ -188,6 +157,7 @@ const mountains = [
     elevation: "2,034",
     location: "Zambales, Palauig",
     difficulty: 5,
+    difficultyText: "Moderate",
   },
   {
     id: "arayat",
@@ -197,6 +167,7 @@ const mountains = [
     elevation: "1,026",
     location: "Pampanga, Arayat",
     difficulty: 5, // Varies by route
+    difficultyText: "Moderate",
   },
   {
     id: "batulao",
@@ -206,6 +177,7 @@ const mountains = [
     elevation: "693",
     location: "Batangas, Nasugbu",
     difficulty: 4,
+    difficultyText: "Average",
   },
   {
     id: "daraitan",
@@ -215,6 +187,7 @@ const mountains = [
     elevation: "719",
     location: "Rizal, Tanay",
     difficulty: 4,
+    difficultyText: "Average",
   },
   {
     id: "pinatubo",
@@ -224,6 +197,7 @@ const mountains = [
     elevation: "1,486",
     location: "Tarlac, Capas",
     difficulty: 2,
+    difficultyText: "Easy",
   },
   {
     id: "marami",
@@ -233,6 +207,7 @@ const mountains = [
     elevation: "633",
     location: "Cavite, Maragondon",
     difficulty: 3,
+    difficultyText: "Mild",
   },
   {
     id: "talamitam",
@@ -242,6 +217,7 @@ const mountains = [
     elevation: "630",
     location: "Batangas, Nasugbu",
     difficulty: 2,
+    difficultyText: "Easy",
   },
 ];
 
