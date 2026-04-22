@@ -8,7 +8,9 @@
   </head>
   <body>
     <nav id="navBar">
-      <h2 id="navHeader">Mountains Condition</h2>
+      <h2 id="navHeader">
+        Mountains Condition <span id="poweredBy">Powered by OpenWeather</span>
+      </h2>
       <div id="searchAndDay">
         <select id="mountainSelect">
           <option value="">Select A Mountain</option>
@@ -58,6 +60,9 @@
               <span>°C</span>
             </p>
           </div>
+          <div id="weatherIconContainer">
+            <img id="weatherIcon" src="" alt="weather Icon" />
+          </div>
         </div>
         <div id="feelsLikeContainer">
           <p>
@@ -106,7 +111,7 @@
           </h2>
         </div>
         <div id="metaData">
-          <div class="dataCard" id="dificulty">
+          <div class="dataCard" id="difficulty">
             <h4 class="dataTitle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -173,14 +178,11 @@
                   d="M17.5 19H9a4.5 4.5 0 0 1 0-9h.5a6.5 6.5 0 1 1 12 2.5"
                 />
               </svg>
-              CLOUDINESS
+              WEATHER
             </h4>
             <div class="dataValueContainer">
               <h2 class="dataValue" id="cloudinessValue">Cloud</h2>
             </div>
-            <h2 class="dataDescription" id="cloudinessDescription">
-              Cloudiness Description
-            </h2>
           </div>
           <div class="dataCard" id="wind">
             <h4 class="dataTitle">
@@ -197,11 +199,22 @@
               </svg>
               WIND
             </h4>
-            <div class="dataValueContainer">
-              <h2 class="dataValue" id="windValue">Wind Speed</h2>
+            <div class="dataValueContainer" id="windDetailsContainer">
+              <div class="windDetail">
+                <span class="dataValueLabel">Speed: </span>
+                <span id="windValue"></span>
+              </div>
+              <div class="windDetail">
+                <span class="dataValueLabel">Direction: </span>
+                <span id="windDirection"></span>
+              </div>
+              <div class="windDetail">
+                <span class="dataValueLabel">Gust: </span>
+                <span id="windGust"></span>
+              </div>
             </div>
             <h2 class="dataDescription" id="windDescription">
-              Wind Direction:
+              Wind Description:
             </h2>
           </div>
           <div class="dataCard" id="sunrise">

@@ -33,6 +33,11 @@ body {
   margin: 0;
 }
 
+#poweredBy {
+  font-size: 12px;
+  font-weight: 100;
+}
+
 #navBar #searchAndDay,
 #tempScale {
   display: flex;
@@ -117,6 +122,17 @@ body {
   border: 1px solid #1a2a4a;
   border-radius: 12px;
   position: relative;
+}
+
+#windDetailsContainer{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  align-content: flex-start;
+}
+
+.dataValueLabel{
+  font-weight: 800;
 }
 
 #humidity {

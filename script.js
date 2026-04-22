@@ -1,6 +1,29 @@
+const elements = {
+  dayDisplay: document.getElementById("dayDisplay"),
+  timeDisplay: document.getElementById("timeDisplay"),
+  location: document.getElementById("location"),
+  difficultyValue: document.getElementById("difficultyValue"),
+  hikabilityDescription: document.getElementById("hikabilityDescription"),
+  mountain: document.getElementById("mountain"),
+  humidityValue: document.getElementById("humidityValue"),
+  humidityResult: document.getElementById("humidityResult"),
+  humidityDescription: document.getElementById("humidityDescription"),
+  temperature: document.getElementById("temperature"),
+  feelsLike: document.getElementById("feelsLike"),
+  windValue: document.getElementById("windValue"),
+  windDirection: document.getElementById("windDirection"),
+  windGust: document.getElementById("windGust"),
+  windDescription: document.getElementById("windDescription"),
+  elevationValue: document.getElementById("elevationValue"),
+  cloudinessValue: document.getElementById("cloudinessValue"),
+  sunriseValue: document.getElementById("sunriseValue"),
+  sunsetValue: document.getElementById("sunsetValue"),
+  mountainSelect: document.getElementById("mountainSelect"),
+  weatherIcon: document.getElementById("weatherIcon"),
+};
+
 const now = new Date();
 const todayString = now.toLocaleDateString([], {
-  day: "numeric",
   month: "long",
   day: "2-digit",
   year: "numeric",
@@ -9,8 +32,87 @@ const currentTimeString = now.toLocaleTimeString([], {
   hour: "2-digit",
   minute: "2-digit",
 });
-document.getElementById("dayDisplay").textContent = todayString;
-document.getElementById("timeDisplay").textContent = currentTimeString;
+
+elements.dayDisplay.textContent = todayString;
+elements.timeDisplay.textContent = currentTimeString;
+
+function humidityAdvice(humidity) {
+  switch (humidity) {
+    case "Very Dry":
+      return "Extremely dry air. High fire risk on open slopes. Drink water frequently.You're losing moisture faster than you realize. Lip balm and moisturizer strongly recommended.";
+    case "Dry":
+      return "Crisp and pleasant. Ideal hiking weather! Sweat evaporates quickly keeping you cool. Still remember to hydrate regularly, dry air masks dehydration.";
+    case "Normal":
+      return "Typical forest humidity. Comfortable for most hikers. Trail conditions should be normal. Light mist possible near summits.";
+    case "Humid":
+      return "Sticky and damp. Sweat won't evaporate well, you'll feel warmer than actual temperature. Trails may be slippery. Wear moisture wicking clothing.";
+    case "Very Humid":
+      return "Heavy air, likely foggy. Expect limited visibility and possible sea of clouds. Jacket and gear will stay wet. Protect electronics from moisture.";
+    default:
+      return "Dense fog and drizzle. Visibility severely reduced. Stay on marked trails. Risk of hypothermia even in moderate temperatures. Waterproof layers essential.";
+  }
+}
+
+function getHumidity(humidityScore) {
+  switch (true) {
+    case humidityScore < 30:
+      return "Very Dry";
+    case humidityScore >= 30 && humidityScore < 49:
+      return "Dry";
+    case humidityScore >= 50 && humidityScore < 70:
+      return "Normal";
+    case humidityScore >= 70 && humidityScore < 85:
+      return "Humid";
+    case humidityScore >= 85 && humidityScore < 95:
+      return "Very Humid";
+    default:
+      return "Foggy";
+  }
+}
+
+const getWindDirection = (degrees) => {
+  const directions = [
+    "N",
+    "NNE",
+    "NE",
+    "ENE",
+    "E",
+    "ESE",
+    "SE",
+    "SSE",
+    "S",
+    "SSW",
+    "SW",
+    "WSW",
+    "W",
+    "WNW",
+    "NW",
+    "NNW",
+  ];
+  const index = Math.round((degrees % 360) / 22.5);
+  return directions[index % 16];
+};
+
+const formatGust = (gust) => {
+  if (gust === undefined || gust === null) return "None";
+  return `${gust.toFixed(1)} km/h`;
+};
+
+function getWindDescription(speedMps) {
+  if (speedMps < 0.3) return "Calm";
+  if (speedMps < 1.6) return "Very Light";
+  if (speedMps < 3.4) return "Light";
+  if (speedMps < 5.5) return "Gentle";
+  if (speedMps < 8.0) return "Moderate";
+  if (speedMps < 10.8) return "Fresh";
+  if (speedMps < 13.9) return "Strong";
+  if (speedMps < 17.2) return "Very Strong";
+  if (speedMps < 20.8) return "Gale";
+  return "Storm";
+}
+
+// Example: console.log(getWindDescription(1.96)); // Output: "Light"
+
 async function fetchWeather(mountain) {
   try {
     const response = await fetch(
@@ -21,6 +123,7 @@ async function fetchWeather(mountain) {
     }
     const data = await response.json();
     console.log(data);
+    console.log(data.weather.icon);
     displayWeather(data, mountain);
   } catch (error) {
     console.log("An error occurred", error.message);
@@ -38,84 +141,57 @@ function capitalizeFirstChar(str) {
     .join(" ");
 }
 
-function getHumidity(humidityScore) {
-  switch (true) {
-    case humidityScore < 30:
-      return "Very Dry";
-      break;
-    case humidityScore >= 30 && humidityScore < 49:
-      return "Dry";
-      break;
-    case humidityScore >= 50 && humidityScore < 70:
-      return "Normal";
-      break;
-    case humidityScore >= 70 && humidityScore < 85:
-      return "Humid";
-      break;
-    case humidityScore >= 85 && humidityScore < 95:
-      return "Very Humid";
-      break;
-    default:
-      return "Foggy";
-  }
-}
-
-function humidityAdvice(humidity) {
-  switch (humidity) {
-    case "Very Dry":
-      return "Extremely dry air. High fire risk on open slopes. Drink water frequently.You're losing moisture faster than you realize. Lip balm and moisturizer strongly recommended.";
-      break;
-    case "Dry":
-      return "Crisp and pleasant. Ideal hiking weather! Sweat evaporates quickly keeping you cool. Still remember to hydrate regularly, dry air masks dehydration.";
-      break;
-    case "Normal":
-      return "Typical forest humidity. Comfortable for most hikers. Trail conditions should be normal. Light mist possible near summits.";
-      break;
-    case "Humid":
-      return "Sticky and damp. Sweat won't evaporate well, you'll feel warmer than actual temperature. Trails may be slippery. Wear moisture wicking clothing.";
-      break;
-    case "Very Humid":
-      return "Heavy air, likely foggy. Expect limited visibility and possible sea of clouds. Jacket and gear will stay wet. Protect electronics from moisture.";
-      break;
-    default:
-      return "Dense fog and drizzle. Visibility severely reduced. Stay on marked trails. Risk of hypothermia even in moderate temperatures. Waterproof layers essential.";
-  }
-}
-
 function displayWeather(data, mountain) {
-  document.getElementById("location").textContent = `${mountain.location}`;
+  const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   const mountainDifficulty = mountain.difficulty;
-  const difficultyValue = document.getElementById("difficultyValue");
-  difficultyValue.textContent = `${mountain.difficulty}/9`;
-  document.getElementById("hikabilityDescription").textContent =
-    `${mountain.difficultyText}`;
-  document.getElementById("mountain").textContent = `${mountain.name}`;
   const humidityScore = data.main.humidity;
   const humidityCondition = getHumidity(data.main.humidity);
-  document.getElementById("humidityValue").textContent = `${humidityScore}%`;
-  document.getElementById("humidityResult").textContent =
-    getHumidity(humidityScore);
-  document.getElementById("humidityDescription").textContent =
-    humidityAdvice(humidityCondition);
-  document.getElementById("temperature").textContent = `${data.main.temp}`;
-  document.getElementById("feelsLike").textContent = `${data.main.feels_like}`;
-  document.getElementById("windValue").textContent = `${data.wind.speed}`;
-  document.getElementById("elevationValue").innerHTML =
-    `${mountain.elevation}m`;
-  const cloudiness = capitalizeFirstChar(data.weather[0].description);
-  document.getElementById("cloudinessValue").textContent = cloudiness;
+  const dataWindDegree = data.wind.deg;
+  const dataWindGust = formatGust(data.wind.gust);
+  const windSpeed = data.wind.speed;
+  const windDescription = getWindDescription(windSpeed);
   const mountainSunrise = new Date(data.sys.sunrise * 1000);
   const sunriseTimeString = mountainSunrise.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
   });
-  document.getElementById("sunriseValue").textContent = sunriseTimeString;
   const mountainSunset = new Date(data.sys.sunset * 1000);
   const sunsetTimeString = mountainSunset.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
   });
-  document.getElementById("sunsetValue").textContent = sunsetTimeString;
+  // Location
+  elements.location.textContent = `${mountain.location}`;
+  // difficulty
+  elements.difficultyValue.textContent = `${mountain.difficulty}/9`;
+  elements.hikabilityDescription.textContent = `${mountain.difficultyText}`;
+  // Mountain
+  elements.mountain.textContent = `${mountain.name}`;
+  // Icon
+  elements.weatherIcon.src = iconUrl;
+    // Humidity
+    elements.humidityValue.textContent = `${humidityScore}%`;
+  elements.humidityResult.textContent = getHumidity(humidityScore);
+  elements.humidityDescription.textContent = humidityAdvice(humidityCondition);
+  // Data Cards
+  // Temp
+  elements.temperature.textContent = `${data.main.temp}`;
+  elements.feelsLike.textContent = `${data.main.feels_like}`;
+  // Wind
+  elements.windValue.textContent = `${windSpeed} km/hr`;
+  elements.windDirection.textContent = getWindDirection(dataWindDegree);
+  elements.windGust.textContent = `${dataWindGust}`;
+  elements.windDescription.textContent = `Wind Description: ${windDescription}`;
+  // Elevation
+  elements.elevationValue.innerHTML = `${mountain.elevation}m`;
+  // Cloudiness
+  elements.cloudinessValue.textContent = capitalizeFirstChar(
+    data.weather[0].description,
+  );
+  // Sunrise
+  elements.sunriseValue.textContent = sunriseTimeString;
+  // Sunset
+  elements.sunsetValue.textContent = sunsetTimeString;
 }
 
 const mountains = [
