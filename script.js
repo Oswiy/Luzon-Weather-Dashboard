@@ -169,8 +169,8 @@ function displayWeather(data, mountain) {
   elements.mountain.textContent = `${mountain.name}`;
   // Icon
   elements.weatherIcon.src = iconUrl;
-    // Humidity
-    elements.humidityValue.textContent = `${humidityScore}%`;
+  // Humidity
+  elements.humidityValue.textContent = `${humidityScore}%`;
   elements.humidityResult.textContent = getHumidity(humidityScore);
   elements.humidityDescription.textContent = humidityAdvice(humidityCondition);
   // Data Cards
@@ -314,3 +314,5 @@ mountainSelect.addEventListener("change", (event) => {
     fetchWeather(selectedMountain);
   }
 });
+
+if (mountains.length) fetchWeather(mountains[0]);

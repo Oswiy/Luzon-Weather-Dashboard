@@ -69,6 +69,13 @@ body {
   gap: 20px;
 }
 
+#mountain {
+  color: white;
+  margin-bottom: 5px;
+}
+
+
+
 #weatherDisplay {
   min-width: 30%;
   display: flex;
@@ -90,8 +97,7 @@ body {
   margin-left: 20px;
 }
 
-#weatherDisplay h5,
-#weatherDisplay #feelsLikeContainer p {
+#weatherDisplay h5{
   margin: 0;
 }
 
@@ -118,26 +124,26 @@ body {
   flex-direction: column;
   padding: 20px;
   backdrop-filter: blur(16px);
-  background: rgba(60, 80, 88, 0.268);
-  border: 1px solid #1a2a4a;
+  background: rgba(61, 60, 88, 0.268);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   position: relative;
 }
 
-#windDetailsContainer{
+#windDetailsContainer {
   display: flex;
   flex-direction: column;
   text-align: start;
   align-content: flex-start;
 }
 
-.dataValueLabel{
+.dataValueLabel {
   font-weight: 800;
 }
 
 #humidity {
   margin-bottom: 20px;
-  margin-right: 20px;
+  width: 94%;
 }
 
 #humidityResult {
@@ -155,6 +161,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   gap: 5px;
+  color: rgba(255, 255, 255, 0.781);
 }
 
 .dataCard .dataTitle svg {
@@ -172,6 +179,7 @@ body {
 #mountainContainer p,
 #feelsLikeContainer p {
   align-items: center;
+  margin: 0;
 }
 
 .dataCard .dataValueContainer {
